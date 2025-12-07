@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EuroX - Official Gov Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0",
+        "react/": "https://aistudiocdn.com/react@^19.2.1/",
+        "react": "https://aistudiocdn.com/react@^19.2.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/"
+      }
+    }
+    </script>
+    <style>
+        :root {
+            --eu-blue: #003399;
+            --eu-yellow: #FFCC00;
+            --win-gray: #c0c0c0;
+            --win-dark: #808080;
+            --win-light: #ffffff;
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 0;
+            background-color: #008080; /* Classic Windows Teal */
+            background-image: url('https://www.transparenttextures.com/patterns/black-scales.png'); /* Subtle texture */
+            color: black;
+            overflow-x: hidden;
+        }
+
+        /* --- 90s Button Style --- */
+        .btn {
+            background-color: var(--win-gray);
+            border-top: 2px solid var(--win-light);
+            border-left: 2px solid var(--win-light);
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+            padding: 2px 10px;
+            cursor: pointer;
+            font-family: 'MS Sans Serif', Arial, sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
+            color: black;
+            margin: 2px;
+        }
+        .btn:active {
+            border-top: 2px solid black;
+            border-left: 2px solid black;
+            border-right: 2px solid var(--win-light);
+            border-bottom: 2px solid var(--win-light);
+            transform: translate(1px, 1px);
+        }
+        .btn:disabled {
+            color: var(--win-dark);
+            cursor: not-allowed;
+        }
+
+        /* --- Layout --- */
+        .retro-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 20px auto;
+            background: var(--win-gray);
+            border: 3px outset white;
+            padding: 10px;
+            min-height: 80vh;
+        }
+
+        /* --- Elements --- */
+        h3 { 
+            background: navy; 
+            color: white; 
+            padding: 3px; 
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .blink { animation: blinker 1s linear infinite; color: red; font-weight: bold; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .compose-box {
+            background: #eee;
+            border: 2px solid blue;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .retro-input, textarea {
+            border: 2px inset gray;
+            background: #ffffe0;
+            font-family: "Courier New", monospace;
+            padding: 4px;
+        }
+
+        .tweet {
+            border: 1px dashed black;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f0f0f0;
+        }
+
+        .redacted { 
+            background: black; 
+            color: black; 
+            cursor: help;
+        }
+        .redacted:hover {
+            color: black; 
+        }
+
+        /* --- Modals (Windows 95 Style) --- */
+        .retro-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+        
+        .retro-modal {
+            background: var(--win-gray);
+            border: 3px outset white;
+            padding: 2px;
+            box-shadow: 10px 10px 0px black;
+        }
+
+        .retro-modal-header {
+            background: navy;
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: sans-serif;
+            font-size: 12px;
+        }
+
+        /* Scrollbars */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #dfdfdf; }
+        ::-webkit-scrollbar-thumb { background: #c0c0c0; border: 2px outset white; }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
